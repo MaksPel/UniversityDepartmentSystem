@@ -12,13 +12,13 @@ public class TeacherRepository(AppDbContext dbContext) : ITeacherRepository
 
     public async Task<IEnumerable<Teacher>> Get(bool trackChanges) =>
         await (!trackChanges 
-            ? _dbContext.Teachers.AsNoTracking() 
-            : _dbContext.Teachers).ToListAsync();
+            ? _dbContext.Teachers.Include(e => e.Subjects).AsNoTracking() 
+            : _dbContext.Teachers.Include(e => e.Subjects)).ToListAsync();
 
     public async Task<Teacher?> GetById(Guid id, bool trackChanges) =>
         await (!trackChanges ?
-            _dbContext.Teachers.AsNoTracking() :
-            _dbContext.Teachers).SingleOrDefaultAsync(e => e.Id == id);
+            _dbContext.Teachers.Include(e => e.Subjects).AsNoTracking() :
+            _dbContext.Teachers.Include(e => e.Subjects)).SingleOrDefaultAsync(e => e.Id == id);
 
     public void Delete(Teacher entity) => _dbContext.Teachers.Remove(entity);
 

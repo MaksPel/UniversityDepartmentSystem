@@ -12,13 +12,13 @@ public class SubjectRepository(AppDbContext dbContext) : ISubjectRepository
 
     public async Task<IEnumerable<Subject>> Get(bool trackChanges) =>
         await (!trackChanges 
-            ? _dbContext.Subjects.AsNoTracking() 
-            : _dbContext.Subjects).ToListAsync();
+            ? _dbContext.Subjects.Include(e => e.Courses).Include(e => e.Teachers).AsNoTracking() 
+            : _dbContext.Subjects.Include(e => e.Courses).Include(e => e.Teachers)).ToListAsync();
 
     public async Task<Subject?> GetById(Guid id, bool trackChanges) =>
         await (!trackChanges ?
-            _dbContext.Subjects.AsNoTracking() :
-            _dbContext.Subjects).SingleOrDefaultAsync(e => e.Id == id);
+            _dbContext.Subjects.Include(e => e.Courses).Include(e => e.Teachers).AsNoTracking() :
+            _dbContext.Subjects.Include(e => e.Courses).Include(e => e.Teachers)).SingleOrDefaultAsync(e => e.Id == id);
 
     public void Delete(Subject entity) => _dbContext.Subjects.Remove(entity);
 

@@ -7,4 +7,5 @@ public class Department
 	public bool IsGraduating { get; set; }
 	public Guid FacultyId { get; set; }
 	public Faculty Faculty { get; set; }
+    public virtual ICollection<Specialty> Specialties { get; set; } = [];
 }

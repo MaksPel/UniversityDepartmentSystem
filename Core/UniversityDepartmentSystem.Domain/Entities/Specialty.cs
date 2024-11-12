@@ -6,4 +6,5 @@ public class Specialty
 	public string Name { get; set; }
 	public Guid DepartmentId { get; set; }
 	public Department Department { get; set; }
+    public virtual ICollection<Course> Courses { get; set; } = [];
 }

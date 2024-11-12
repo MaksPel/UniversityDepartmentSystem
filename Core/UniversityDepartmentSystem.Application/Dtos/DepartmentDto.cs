@@ -1,3 +1,5 @@
+using UniversityDepartmentSystem.Domain.Entities;
+
 namespace UniversityDepartmentSystem.Application.Dtos;
 
 public class DepartmentDto 
@@ -7,5 +9,6 @@ public class DepartmentDto
 	public bool IsGraduating { get; set; }
 	public Guid FacultyId { get; set; }
 	public FacultyDto Faculty { get; set; }
+    public ICollection<Specialty> Specialties { get; set; }
 }
 

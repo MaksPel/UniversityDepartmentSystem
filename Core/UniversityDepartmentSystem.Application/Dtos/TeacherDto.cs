@@ -1,3 +1,5 @@
+using UniversityDepartmentSystem.Domain.Entities;
+
 namespace UniversityDepartmentSystem.Application.Dtos;
 
 public class TeacherDto 
@@ -8,5 +10,6 @@ public class TeacherDto
 	public string Midname { get; set; }
 	public string Position { get; set; }
 	public int Age { get; set; }
+    public ICollection<Subject> Subjects { get; set; } 
 }
 

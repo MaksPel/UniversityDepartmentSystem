@@ -12,13 +12,13 @@ public class CourseRepository(AppDbContext dbContext) : ICourseRepository
 
     public async Task<IEnumerable<Course>> Get(bool trackChanges) =>
         await (!trackChanges 
-            ? _dbContext.Courses.Include(e => e.Specialty).AsNoTracking() 
-            : _dbContext.Courses.Include(e => e.Specialty)).ToListAsync();
+            ? _dbContext.Courses.Include(e => e.Subjects).Include(e => e.Specialty).AsNoTracking() 
+            : _dbContext.Courses.Include(e => e.Subjects).Include(e => e.Specialty)).ToListAsync();
 
     public async Task<Course?> GetById(Guid id, bool trackChanges) =>
         await (!trackChanges ?
-            _dbContext.Courses.Include(e => e.Specialty).AsNoTracking() :
-            _dbContext.Courses.Include(e => e.Specialty)).SingleOrDefaultAsync(e => e.Id == id);
+            _dbContext.Courses.Include(e => e.Subjects).Include(e => e.Specialty).AsNoTracking() :
+            _dbContext.Courses.Include(e => e.Subjects).Include(e => e.Specialty)).SingleOrDefaultAsync(e => e.Id == id);
 
     public void Delete(Course entity) => _dbContext.Courses.Remove(entity);
 

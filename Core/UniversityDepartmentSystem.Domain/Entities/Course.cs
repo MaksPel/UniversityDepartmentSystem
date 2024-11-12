@@ -7,4 +7,6 @@ public class Course
 	public int SemesterNumber { get; set; }
 	public Guid SpecialtyId { get; set; }
 	public Specialty Specialty { get; set; }
+
+    public virtual ICollection<Subject> Subjects { get; set; } = [];
 }
