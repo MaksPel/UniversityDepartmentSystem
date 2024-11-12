@@ -16,7 +16,7 @@ public class SubjectConfiguration : IEntityTypeConfiguration<Subject>
     {
         builder.HasData(
             new Subject { Id = Guid.Parse("99999999-9999-9999-9999-999999999999"), Name = "Алгебра", LectureHours = 30, PracticalHours = 15, LabHours = 5, ReportingType = "Экзамен" },
-            new Subject { Id = Guid.Parse("aaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaaa"), Name = "Этика", LectureHours = 20, PracticalHours = 10, LabHours = 0, ReportingType = "Зачет" }
+            new Subject { Id = Guid.Parse("99999999-9999-9999-9199-999999999999"), Name = "Этика", LectureHours = 20, PracticalHours = 10, LabHours = 0, ReportingType = "Зачет" }
         );
     }
 }

@@ -15,8 +15,8 @@ public class TeacherConfiguration : IEntityTypeConfiguration<Teacher>
     public void Configure(EntityTypeBuilder<Teacher> builder)
     {
         builder.HasData(
-            new Teacher { Id = Guid.Parse("bbbbbbbb-bbbb-bbbb-bbbb-bbbbbbbbbbbb"), Name = "Иван", Surname = "Иванов", Midname = "Иванович", Position = "Доцент", Age = 40 },
-            new Teacher { Id = Guid.Parse("cccccccc-cccc-cccc-cccc-cccccccccccc"), Name = "Мария", Surname = "Петрова", Midname = "Сергеевна", Position = "Преподаватель", Age = 40 }
+            new Teacher { Id = Guid.Parse("99999999-9999-9999-9999-999999299999"), Name = "Иван", Surname = "Иванов", Midname = "Иванович", Position = "Доцент", Age = 40 },
+            new Teacher { Id = Guid.Parse("99999999-9999-9999-9999-999999969999"), Name = "Мария", Surname = "Петрова", Midname = "Сергеевна", Position = "Преподаватель", Age = 40 }
         );
     }
 }
