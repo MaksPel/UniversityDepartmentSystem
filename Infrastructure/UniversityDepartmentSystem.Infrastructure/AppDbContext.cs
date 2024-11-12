@@ -1,5 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using UniversityDepartmentSystem.Domain.Entities;
+using UniversityDepartmentSystem.Infrastructure.Configurations;
 
 namespace UniversityDepartmentSystem.Infrastructure;
 
@@ -126,6 +127,14 @@ public class AppDbContext(DbContextOptions options) : DbContext(options)
                     });
         });
 
+        modelBuilder.ApplyConfiguration(new FacultyConfiguration());
+        modelBuilder.ApplyConfiguration(new DepartmentConfiguration());
+        modelBuilder.ApplyConfiguration(new SpecialtyConfiguration());
+        modelBuilder.ApplyConfiguration(new CourseConfiguration());
+        modelBuilder.ApplyConfiguration(new SubjectConfiguration());
+        modelBuilder.ApplyConfiguration(new TeacherConfiguration());
+
+        base.OnModelCreating(modelBuilder);
     }
 
 }
